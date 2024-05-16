@@ -6,11 +6,11 @@ from error import SubTipoInvalidoError
 
 class Anuncio:
     def __init__(self, sub_tipo: str, ancho=1, alto=1, url_archivo="", url_clic=""):
-        self.ancho = ancho
-        self.alto = alto
-        self.url_archivo = url_archivo
-        self.url_clic = url_clic
-        self.sub_tipo = sub_tipo
+        self.__ancho = ancho
+        self.__alto = alto
+        self.__url_archivo = url_archivo
+        self.__url_clic = url_clic
+        self.__sub_tipo = sub_tipo
 
     @staticmethod
     def mostrar_formatos():
@@ -60,35 +60,35 @@ class Anuncio:
 
     @property
     def ancho(self) -> int:
-        return self._ancho
+        return self.__ancho
 
     @ancho.setter
     def ancho(self, value: int):
-        self._ancho = value if value > 0 else 1
+        self.__ancho = value if value > 0 else 1
 
     @property
     def alto(self) -> int:
-        return self._alto
+        return self.__alto
 
     @alto.setter
     def alto(self, value: int):
-        self._alto = value if value > 0 else 1
+        self.__alto = value if value > 0 else 1
 
     @property
     def url_archivo(self) -> str:
-        return self._url_archivo
+        return self.__url_archivo
 
     @url_archivo.setter
     def url_archivo(self, value: int):
-        self._url_archivo = value
+        self.__url_archivo = value
 
     @property
     def url_clic(self) -> str:
-        return self._url_clic
+        return self.__url_clic
 
     @url_clic.setter
     def url_clic(self, value: int):
-        self._url_clic = value
+        self.__url_clic = value
 
 
 class Video(Anuncio):
@@ -96,11 +96,11 @@ class Video(Anuncio):
     SUB_TIPOS = ["instream", "outstream"]
 
     def __init__(self, duracion=5, url_archivo="", url_clic=""):
-        self.ancho = 1
-        self.alto = 1
-        self.url_archivo = url_archivo
-        self.url_clic = url_clic
-        self.duracion = duracion
+        self.__ancho = 1
+        self.__alto = 1
+        self.__url_archivo = url_archivo
+        self.__url_clic = url_clic
+        self.__duracion = duracion
 
     def comprimir_anuncio(self):
         print("COMPRESIÓN DE VIDEO NO IMPLEMENTADA AÚN")
@@ -110,11 +110,11 @@ class Video(Anuncio):
 
     @property
     def duracion(self) -> int:
-        return self._duracion
+        return self.__duracion
 
     @duracion.setter
     def duracion(self, value: int):
-        self._duracion = value if value > 0 else 5
+        self.__duracion = value if value > 0 else 5
 
 
 class Display(Anuncio):

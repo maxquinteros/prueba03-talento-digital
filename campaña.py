@@ -1,7 +1,6 @@
 from anuncio import Anuncio, Video, Display, Social
 from error import LargoExcedidoError
 
-
 class Campaña:
 
     def __init__(
@@ -13,34 +12,34 @@ class Campaña:
         numero_displays: int,
         numero_socials: int,
     ):
-        self.nombre = nombre
-        self.fecha_inicio = fecha_inicio
-        self.fecha_termino = fecha_termino
-        self.videos = []
-        self.displays = []
-        self.socials = []
+        self.__nombre = nombre
+        self.__fecha_inicio = fecha_inicio
+        self.__fecha_termino = fecha_termino
+        self.__videos = []
+        self.__displays = []
+        self.__socials = []
 
-        for video in range(numero_videos):
-            self.videos.append(Video())
+        for _ in range(numero_videos):
+            self.__videos.append(Video())
 
-        for display in range(numero_displays):
-            self.displays.append(Display())
+        for _ in range(numero_displays):
+            self.__displays.append(Display())
 
-        for social in range(numero_socials):
-            self.socials.append(Social())
+        for _ in range(numero_socials):
+            self.__socials.append(Social())
 
     def __str__(self):
-        return f"Nombre de la campaña: {self.nombre}\n{self.anuncios}"
+        return f"Nombre de la campaña: {self.__nombre}\n{self.anuncios}"
 
     @property
     def nombre(self) -> str:
-        return self._nombre
+        return self.__nombre
 
     @nombre.setter
-    def nombre(self, value):
+    def nombre(self, value: str):
         try:
             if len(value) <= 250:
-                self._nombre = value
+                self.__nombre = value
             else:
                 raise LargoExcedidoError("El nombre excede los carácteres permitidos")
         except LargoExcedidoError as e:
@@ -50,20 +49,20 @@ class Campaña:
 
     @property
     def fecha_inicio(self):
-        return self._fecha_inicio
+        return self.__fecha_inicio
 
     @fecha_inicio.setter
-    def fecha_inicio(self, value):
-        self._fecha_inicio = value
+    def fecha_inicio(self, value: str):
+        self.__fecha_inicio = value
 
     @property
     def fecha_termino(self):
-        return self._fecha_termino
+        return self.__fecha_termino
 
     @fecha_termino.setter
-    def fecha_termino(self, value):
-        self._fecha_termino = value
+    def fecha_termino(self, value: str):
+        self.__fecha_termino = value
 
     @property
     def anuncios(self):
-        return f"Anuncios: {len(self.videos)} Video, {len(self.displays)} Display, {len(self.socials)} Social"
+        return f"Anuncios: {len(self.__videos)} Video, {len(self.__displays)} Display, {len(self.__socials)} Social"
